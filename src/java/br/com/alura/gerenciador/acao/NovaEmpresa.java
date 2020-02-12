@@ -19,9 +19,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Gustavo
  */
-public class NovaEmpresa {
+public class NovaEmpresa implements Acao{
 
-    public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("Cadastrando nova empresa");
 
@@ -46,7 +46,7 @@ public class NovaEmpresa {
 
         request.setAttribute("empresa", empresa.getNome()); //Setar atributo a ser enviado p/ o JSP
 
-        response.sendRedirect("entrada?acao=ListaEmpresas");
+        return "redirect:entrada?acao=ListaEmpresas";
 
     }
 
