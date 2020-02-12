@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.acao;
 
+import br.com.alura.gerenciador.modelo.Banco;
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,20 +15,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Gustavo
  */
-@WebServlet(name = "RemoveEmpresaServlet", urlPatterns = {"/removeEmpresa"})
-public class RemoveEmpresaServlet extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+public class RemoveEmpresa {
+    
+    public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String paramId = request.getParameter("id");
         Integer id = Integer.valueOf(paramId);
         
         Banco banco = new Banco();
         banco.removeEmpresa(id);
         
-        response.sendRedirect("listaEmpresas");
+        response.sendRedirect("entrada?acao=ListaEmpresas");
     }
-
-
+    
 }

@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.List, br.com.alura.gerenciador.servlet.Empresa"  %>
+<%@page import="java.util.List, br.com.alura.gerenciador.modelo.Empresa"  %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
@@ -25,8 +25,8 @@
         <ul>
             <c:forEach items="${requestScope.empresas}" var="e">
                 <li>${e.nome} - <fmt:formatDate value="${e.dataAbertura}" pattern="dd/MM/yyyy" />
-                    <a href="/gerenciador/mostraEmpresa?id=${e.id}">Edita</a>
-                    <a href="/gerenciador/removeEmpresa?id=${e.id}">Remove</a>
+                    <a href="/gerenciador/entrada?acao=MostraEmpresa&id=${e.id}">Edita</a>
+                    <a href="/gerenciador/entrada?acao=RemoveEmpresa&id=${e.id}">Remove</a>
                 </li>
             </c:forEach>
         </ul>
