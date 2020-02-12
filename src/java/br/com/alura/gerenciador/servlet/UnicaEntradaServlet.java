@@ -25,7 +25,6 @@ public class UnicaEntradaServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String paramAcao = request.getParameter("acao");
-
         String nomeDaClasse = "br.com.alura.gerenciador.acao." + paramAcao;
 
         String nome;
