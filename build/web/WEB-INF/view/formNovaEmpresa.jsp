@@ -16,6 +16,8 @@ and open the template in the editor.
     </head>
     <body>
         
+        <c:import url="logout-parcial.jsp" />
+        
         <form action="${linkServletNovaEmpresa}" method="post">
             
             Nome: <input type="text" name="nome" />

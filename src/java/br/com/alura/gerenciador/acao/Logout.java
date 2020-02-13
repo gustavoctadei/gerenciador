@@ -5,10 +5,7 @@
  */
 package br.com.alura.gerenciador.acao;
 
-import br.com.alura.gerenciador.modelo.Banco;
-import br.com.alura.gerenciador.modelo.Empresa;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,17 +15,17 @@ import javax.servlet.http.HttpSession;
  *
  * @author Gustavo
  */
-public class ListaEmpresas implements Acao{
-    
-    public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+public class Logout implements Acao {
+
+    @Override
+    public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        Banco banco = new Banco();
-        List<Empresa> lista = banco.getEmpresas();
+        HttpSession sessao = request.getSession();
         
-        request.setAttribute("empresas", lista);
+        //sessao.removeAttribute("usuarioLogado");
         
-        return "forward:listaEmpresas.jsp";
-        
+        sessao.invalidate();        
+        return "redirect:entrada?acao=LoginForm";
     }
     
 }
