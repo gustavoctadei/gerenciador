@@ -9,6 +9,7 @@ import br.com.alura.gerenciador.acao.Acao;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -30,7 +31,7 @@ public class ControladorFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String paramAcao = request.getParameter("acao");
-        
+
         String nomeDaClasse = "br.com.alura.gerenciador.acao." + paramAcao;
 
         String nome;
@@ -51,6 +52,14 @@ public class ControladorFilter implements Filter {
         } else {
             response.sendRedirect(tipoEEndereco[1]);
         }
+    }
+
+    @Override
+    public void init(FilterConfig fg) throws ServletException {
+    }
+
+    @Override
+    public void destroy() {
     }
 
 }
